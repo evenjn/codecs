@@ -30,23 +30,20 @@ import org.github.evenjn.yarn.IteratorMap;
 
 public class Strings {
 
-	public static String zeropad( int length, int value ) {
-		if ( length < 1 || length > 30 ) {
-			throw new IllegalArgumentException(
-					"Length must be at least 1 and at most 30." );
+	public static String prependPad( String s, char pad, int target_length ) {
+		StringBuilder sb = new StringBuilder( );
+		for ( int length = s.length( ); length < target_length; length++ ) {
+			sb.append( pad );
 		}
-		String result =
-				"000000000000000000000000000000" + Integer.toString( value );
-		result = result.substring( result.length( ) - length );
-		return result;
-
+		sb.append( s );
+		return sb.toString( );
 	}
 
-	public static String pad( String s, int to ) {
+	public static String appendPad( String s, char pad, int target_length ) {
 		StringBuilder sb = new StringBuilder( );
 		sb.append( s );
-		for ( int length = s.length( ); length < to; length++ ) {
-			sb.append( " " );
+		for ( int length = s.length( ); length < target_length; length++ ) {
+			sb.append( pad );
 		}
 		return sb.toString( );
 	}
