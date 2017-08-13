@@ -25,22 +25,22 @@ import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.CursorMapH;
+import org.github.evenjn.yarn.CursorRookMap;
 import org.github.evenjn.yarn.EndOfCursorException;
-import org.github.evenjn.yarn.Hook;
+import org.github.evenjn.yarn.Rook;
 
 public class ZipDecoderBlueprint {
 
-	public CursorMapH<InputStream, ZipEntry> build( ) {
+	public CursorRookMap<InputStream, ZipEntry> build( ) {
 		return ZipDecoderBlueprint::decode;
 	}
 
 	private static Cursor<ZipEntry> decode(
-			Hook hook,
+			Rook rook,
 			InputStream is ) {
 		try {
 
-			final ZipArchiveInputStream zais = hook.hook(
+			final ZipArchiveInputStream zais = rook.hook(
 					(ZipArchiveInputStream) new ArchiveStreamFactory( )
 							.createArchiveInputStream( "zip", is ) );
 

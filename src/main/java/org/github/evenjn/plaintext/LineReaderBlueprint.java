@@ -27,20 +27,20 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.CursorMapH;
-import org.github.evenjn.yarn.Hook;
+import org.github.evenjn.yarn.CursorRookMap;
 import org.github.evenjn.yarn.EndOfCursorException;
+import org.github.evenjn.yarn.Rook;
 
 public class LineReaderBlueprint {
 
-	public CursorMapH<InputStream, String> build( ) {
+	public CursorRookMap<InputStream, String> build( ) {
 		final Charset local_cs = cs;
 		final Pattern local_delimiter = delimiter;
-		return new CursorMapH<InputStream, String>( ) {
+		return new CursorRookMap<InputStream, String>( ) {
 
 			@Override
-			public Cursor<String> get( Hook h, InputStream input ) {
-				return LineReaderBlueprint.read( h, input, local_cs, local_delimiter );
+			public Cursor<String> get( Rook rook, InputStream input ) {
+				return LineReaderBlueprint.read( rook, input, local_cs, local_delimiter );
 			}
 		};
 	}
@@ -63,15 +63,15 @@ public class LineReaderBlueprint {
 			Pattern.compile( "[\\x0D]?[\\x0A]" );
 
 	private static Cursor<String> read(
-			Hook hook,
+			Rook rook,
 			InputStream input,
 			Charset cs,
 			Pattern delimiter ) {
-		Reader reader = hook.hook( new InputStreamReader( input, cs ) );
+		Reader reader = rook.hook( new InputStreamReader( input, cs ) );
 		BufferedReader buffered_reader =
-				hook.hook( new BufferedReader( reader ) );
+				rook.hook( new BufferedReader( reader ) );
 
-		Scanner scanner = hook.hook( new Scanner( buffered_reader ) );
+		Scanner scanner = rook.hook( new Scanner( buffered_reader ) );
 		scanner.useDelimiter( delimiter );
 		return new Cursor<String>( ) {
 

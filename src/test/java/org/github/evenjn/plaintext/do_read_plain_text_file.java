@@ -24,14 +24,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.github.evenjn.bzip2.Bzip2;
-import org.github.evenjn.yarn.AutoHook;
+import org.github.evenjn.yarn.AutoRook;
 import org.github.evenjn.yarn.Cursor;
 import org.github.evenjn.yarn.EndOfCursorException;
 
 public class do_read_plain_text_file {
 
 	public static void main( String[] args ) throws IOException {
-		try ( AutoHook hook = new BasicAutoHook( ) ) {
+		try ( AutoRook hook = new BasicAutoHook( ) ) {
 			Path path = Paths.get( "./src/test/resources/test.txt" );
 			InputStream is = hook.hook( Files.newInputStream( path ) );
 			Cursor<String> stream = PlainText.reader( ).build( ).get( hook, is );

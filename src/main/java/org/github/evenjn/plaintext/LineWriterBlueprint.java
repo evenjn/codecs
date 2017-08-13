@@ -21,21 +21,21 @@ import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.function.Consumer;
 
-import org.github.evenjn.yarn.FunctionH;
-import org.github.evenjn.yarn.Hook;
+import org.github.evenjn.yarn.RookFunction;
+import org.github.evenjn.yarn.Rook;
 
 public class LineWriterBlueprint {
 	
-	public FunctionH<OutputStream, Consumer<String>> build( ) {
+	public RookFunction<OutputStream, Consumer<String>> build( ) {
 		final Charset local_cs = cs;
 		final String local_delimiter = delimiter;
 		final boolean local_force_flush = force_flush;
-		FunctionH<OutputStream, Consumer<String>> result =
-				new FunctionH<OutputStream, Consumer<String>>( ) {
+		RookFunction<OutputStream, Consumer<String>> result =
+				new RookFunction<OutputStream, Consumer<String>>( ) {
 
 					@Override
-					public Consumer<String> get( Hook hook, OutputStream output_stream ) {
-						return PlainText.write( hook, output_stream, local_cs,
+					public Consumer<String> get( Rook rook, OutputStream output_stream ) {
+						return PlainText.write( rook, output_stream, local_cs,
 								local_delimiter, local_force_flush );
 					}
 				};

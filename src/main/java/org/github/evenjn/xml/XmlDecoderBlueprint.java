@@ -22,20 +22,20 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.CursorMapH;
-import org.github.evenjn.yarn.Hook;
+import org.github.evenjn.yarn.CursorRookMap;
+import org.github.evenjn.yarn.Rook;
 
 public class XmlDecoderBlueprint {
 
-	public CursorMapH<InputStream, SuppressedXmlStreamElement> build( ) {
+	public CursorRookMap<InputStream, SuppressedXmlStreamElement> build( ) {
 		Charset local_cs = cs;
-		return new CursorMapH<InputStream, SuppressedXmlStreamElement>( ) {
+		return new CursorRookMap<InputStream, SuppressedXmlStreamElement>( ) {
 
 			@Override
-			public Cursor<SuppressedXmlStreamElement> get( Hook h,
+			public Cursor<SuppressedXmlStreamElement> get( Rook rook,
 					InputStream input ) {
 				return new XmlCursor(
-						h.hook( new InputStreamReader( input, local_cs ) ) );
+						rook.hook( new InputStreamReader( input, local_cs ) ) );
 			}
 
 		};

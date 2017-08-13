@@ -20,10 +20,10 @@ package org.github.evenjn.plaintext;
 import java.util.Collections;
 import java.util.LinkedList;
 
-import org.github.evenjn.yarn.AutoHook;
+import org.github.evenjn.yarn.AutoRook;
 
 public final class BasicAutoHook implements
-		AutoHook {
+		AutoRook {
 
 	private LinkedList<AutoCloseable> objects_to_close;
 

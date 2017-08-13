@@ -23,14 +23,14 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import org.github.evenjn.yarn.AutoHook;
+import org.github.evenjn.yarn.AutoRook;
 import org.github.evenjn.yarn.Cursor;
 import org.github.evenjn.yarn.EndOfCursorException;
 
 public class PlainTextProcess {
 
 	public static boolean run(
-			Supplier<AutoHook> hf,
+			Supplier<AutoRook> hf,
 			Path workingDirectory,
 			ProcessBuilder process_builder,
 			int timeout_minutes )
@@ -48,7 +48,7 @@ public class PlainTextProcess {
 	public static boolean print_debug = true;
 
 	public static boolean run(
-			Supplier<AutoHook> hf,
+			Supplier<AutoRook> hf,
 			Path workingDirectory,
 			ProcessBuilder process_builder,
 			Consumer<String> out_putter,
@@ -74,7 +74,7 @@ public class PlainTextProcess {
 
 			@Override
 			public void run( ) {
-				try ( AutoHook hook = hf.get( ) ) {
+				try ( AutoRook hook = hf.get( ) ) {
 					Cursor<String> cursor = PlainText.reader( ).build( ).get( hook,
 							process.getErrorStream( ) );
 
@@ -100,7 +100,7 @@ public class PlainTextProcess {
 
 			@Override
 			public void run( ) {
-				try ( AutoHook hook = hf.get( ) ) {
+				try ( AutoRook hook = hf.get( ) ) {
 					Cursor<String> cursor = PlainText.reader( ).build( ).get( hook,
 							process.getInputStream( ) );
 

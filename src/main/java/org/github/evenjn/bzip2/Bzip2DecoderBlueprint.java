@@ -22,19 +22,19 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
-import org.github.evenjn.yarn.FunctionH;
-import org.github.evenjn.yarn.Hook;
+import org.github.evenjn.yarn.RookFunction;
+import org.github.evenjn.yarn.Rook;
 
 public class Bzip2DecoderBlueprint {
 
-	public FunctionH<InputStream, InputStream> build( ) {
+	public RookFunction<InputStream, InputStream> build( ) {
 		return Bzip2DecoderBlueprint::decode;
 	}
 
-	private static InputStream decode( Hook hook, InputStream stream ) {
+	private static InputStream decode( Rook rook, InputStream stream ) {
 		try {
-			return hook.hook( new BZip2CompressorInputStream(
-					hook.hook( new BufferedInputStream( stream ) ) ) );
+			return rook.hook( new BZip2CompressorInputStream(
+					rook.hook( new BufferedInputStream( stream ) ) ) );
 		}
 		catch ( IOException e ) {
 			throw new RuntimeException( e );

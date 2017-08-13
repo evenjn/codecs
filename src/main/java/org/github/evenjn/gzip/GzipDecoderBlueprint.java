@@ -22,16 +22,16 @@ import java.io.InputStream;
 import org.apache.commons.compress.compressors.CompressorException;
 import org.apache.commons.compress.compressors.CompressorInputStream;
 import org.apache.commons.compress.compressors.CompressorStreamFactory;
-import org.github.evenjn.yarn.FunctionH;
-import org.github.evenjn.yarn.Hook;
+import org.github.evenjn.yarn.RookFunction;
+import org.github.evenjn.yarn.Rook;
 
 public class GzipDecoderBlueprint {
 
-	public FunctionH<InputStream, InputStream> build( ) {
+	public RookFunction<InputStream, InputStream> build( ) {
 		return GzipDecoderBlueprint::decode;
 	}
 
-	private static InputStream decode( Hook hook, InputStream is ) {
+	private static InputStream decode( Rook rook, InputStream is ) {
 		try {
 			/**
 			 * This never throws, it's not closeable.
@@ -46,7 +46,7 @@ public class GzipDecoderBlueprint {
 					compressorStreamFactory
 							.createCompressorInputStream( CompressorStreamFactory.GZIP, is );
 
-			return hook.hook( createCompressorInputStream );
+			return rook.hook( createCompressorInputStream );
 		}
 		catch ( CompressorException e ) {
 			throw new RuntimeException( e );

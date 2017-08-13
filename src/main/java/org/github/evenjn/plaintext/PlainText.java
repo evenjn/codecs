@@ -34,7 +34,7 @@ import java.util.function.Consumer;
 
 import org.github.evenjn.yarn.Cursable;
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.Hook;
+import org.github.evenjn.yarn.Rook;
 
 public class PlainText {
 
@@ -51,13 +51,13 @@ public class PlainText {
 		Cursable<String> cursable = new Cursable<String>( ) {
 
 			@Override
-			public Cursor<String> pull( Hook hook ) {
+			public Cursor<String> pull( Rook rook ) {
 				try {
-					InputStream is = hook.hook( Files.newInputStream( path ) );
+					InputStream is = rook.hook( Files.newInputStream( path ) );
 					Cursor<String> cursor = PlainText
 							.reader( )
 							.build( )
-							.get( hook, is );
+							.get( rook, is );
 					return cursor;
 				}
 				catch ( IOException e ) {
@@ -80,15 +80,15 @@ public class PlainText {
 	 */
 
 	static Consumer<String> write(
-			Hook hook,
+			Rook rook,
 			OutputStream os,
 			Charset cs,
 			String delimiter,
 			boolean force_flush ) {
 		CharsetEncoder encoder = cs.newEncoder( );
-		Writer writer = hook.hook( new OutputStreamWriter( os, encoder ) );
+		Writer writer = rook.hook( new OutputStreamWriter( os, encoder ) );
 		BufferedWriter buffered_writer =
-				hook.hook( new BufferedWriter( writer ) );
+				rook.hook( new BufferedWriter( writer ) );
 		return new Consumer<String>( ) {
 
 			@Override

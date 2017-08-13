@@ -25,7 +25,7 @@ import java.nio.file.Paths;
 
 import org.github.evenjn.yarn.Cursable;
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.Hook;
+import org.github.evenjn.yarn.Rook;
 
 public class Xml {
 
@@ -38,10 +38,10 @@ public class Xml {
 		return new Cursable<SuppressedXmlStreamElement>( ) {
 
 			@Override
-			public Cursor<SuppressedXmlStreamElement> pull( Hook hook ) {
+			public Cursor<SuppressedXmlStreamElement> pull( Rook rook ) {
 				try {
-					InputStream is = hook.hook( Files.newInputStream( path ) );
-					return new XmlDecoderBlueprint( ).build().get( hook, is );
+					InputStream is = rook.hook( Files.newInputStream( path ) );
+					return new XmlDecoderBlueprint( ).build().get( rook, is );
 				}
 				catch ( IOException e ) {
 					throw new RuntimeException( e );

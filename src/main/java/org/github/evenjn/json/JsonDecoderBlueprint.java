@@ -22,23 +22,23 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
 
-import org.github.evenjn.yarn.FunctionH;
-import org.github.evenjn.yarn.Hook;
+import org.github.evenjn.yarn.RookFunction;
+import org.github.evenjn.yarn.Rook;
 
 import com.google.gson.Gson;
 
 
 public class JsonDecoderBlueprint<T> {
 
-	public FunctionH<InputStream, T> build( ) {
+	public RookFunction<InputStream, T> build( ) {
 		Charset local_cs = cs;
 		Class<T> local_class_of_t = class_of_t;
 		
-		return new FunctionH<InputStream, T>( ) {
+		return new RookFunction<InputStream, T>( ) {
 
 			@Override
-			public T get( Hook hook, InputStream is ) {
-				Reader reader = hook.hook( new InputStreamReader( is, local_cs ) );
+			public T get( Rook rook, InputStream is ) {
+				Reader reader = rook.hook( new InputStreamReader( is, local_cs ) );
 				return new Gson( ).fromJson( reader, local_class_of_t );
 			}
 		} ;

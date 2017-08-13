@@ -25,22 +25,22 @@ import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.CursorMapH;
+import org.github.evenjn.yarn.CursorRookMap;
 import org.github.evenjn.yarn.EndOfCursorException;
-import org.github.evenjn.yarn.Hook;
+import org.github.evenjn.yarn.Rook;
 
 public class TarDecoderBlueprint {
 
-	public CursorMapH<InputStream, TarEntry> build( ) {
+	public CursorRookMap<InputStream, TarEntry> build( ) {
 		return TarDecoderBlueprint::decode;
 	}
 
 	private static Cursor<TarEntry> decode(
-			Hook hook,
+			Rook rook,
 			InputStream is ) {
 		try {
 
-			final TarArchiveInputStream tais = hook.hook(
+			final TarArchiveInputStream tais = rook.hook(
 					(TarArchiveInputStream) new ArchiveStreamFactory( )
 							.createArchiveInputStream( "tar", is ) );
 
