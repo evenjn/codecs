@@ -34,7 +34,7 @@ public class do_read_plain_text_file {
 		try ( AutoRook hook = new BasicAutoHook( ) ) {
 			Path path = Paths.get( "./src/test/resources/test.txt" );
 			InputStream is = hook.hook( Files.newInputStream( path ) );
-			Cursor<String> stream = PlainText.reader( ).build( ).get( hook, is );
+			Cursor<String> stream = PlainTextBlueprint.nu( ).reader( ).get( ).get( hook, is );
 			for ( ;; ) {
 				try {
 					System.out.println( stream.next( ) );
@@ -47,7 +47,7 @@ public class do_read_plain_text_file {
 			path = Paths.get( "./src/test/resources/test.txt.bz2" );
 			is = hook.hook( Files.newInputStream( path ) );
 			is = Bzip2.decoder( ).build( ).get( hook, is );
-			stream = PlainText.reader( ).build( ).get( hook, is );
+			stream = PlainTextBlueprint.nu( ).reader( ).get( ).get( hook, is );
 			for ( ;; ) {
 				try {
 					System.out.println( stream.next( ) );

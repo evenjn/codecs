@@ -24,8 +24,9 @@ import java.util.function.Consumer;
 import org.github.evenjn.yarn.RookFunction;
 import org.github.evenjn.yarn.Rook;
 
+@Deprecated
 public class LineWriterBlueprint {
-	
+
 	public RookFunction<OutputStream, Consumer<String>> build( ) {
 		final Charset local_cs = cs;
 		final String local_delimiter = delimiter;
@@ -62,6 +63,5 @@ public class LineWriterBlueprint {
 		this.force_flush = force_flush;
 		return this;
 	}
-
 
 }

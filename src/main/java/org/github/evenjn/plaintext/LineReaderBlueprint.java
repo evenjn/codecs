@@ -31,6 +31,7 @@ import org.github.evenjn.yarn.CursorRookMap;
 import org.github.evenjn.yarn.EndOfCursorException;
 import org.github.evenjn.yarn.Rook;
 
+@Deprecated
 public class LineReaderBlueprint {
 
 	public CursorRookMap<InputStream, String> build( ) {
@@ -40,21 +41,22 @@ public class LineReaderBlueprint {
 
 			@Override
 			public Cursor<String> get( Rook rook, InputStream input ) {
-				return LineReaderBlueprint.read( rook, input, local_cs, local_delimiter );
+				return LineReaderBlueprint.read( rook, input, local_cs,
+						local_delimiter );
 			}
 		};
 	}
 
 	private Charset cs = Charset.forName( "UTF-8" );
-	
+
 	private Pattern delimiter = delimiter_pattern;
 
 	public LineReaderBlueprint setCharset( Charset cs ) {
 		this.cs = cs;
 		return this;
 	}
-	
-	public  LineReaderBlueprint setDelimiter( Pattern delimiter ) {
+
+	public LineReaderBlueprint setDelimiter( Pattern delimiter ) {
 		this.delimiter = delimiter;
 		return this;
 	}
@@ -92,7 +94,7 @@ public class LineReaderBlueprint {
 							}
 							return next;
 						}
-						throw EndOfCursorException.neo();
+						throw EndOfCursorException.neo( );
 					}
 					catch ( IOException e ) {
 						throw new RuntimeException( e );

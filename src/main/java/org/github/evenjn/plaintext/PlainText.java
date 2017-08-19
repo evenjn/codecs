@@ -38,14 +38,15 @@ import org.github.evenjn.yarn.Rook;
 
 public class PlainText {
 
+	@Deprecated
 	public static LineReaderBlueprint reader( ) {
 		return new LineReaderBlueprint( );
 	}
-
+	@Deprecated
 	public static LineWriterBlueprint writer( ) {
 		return new LineWriterBlueprint( );
 	}
-
+	@Deprecated
 	public static Cursable<String> fileRead( String file ) {
 		Path path = Paths.get( file );
 		Cursable<String> cursable = new Cursable<String>( ) {
@@ -78,7 +79,7 @@ public class PlainText {
 	 * file + "]" ); } ff.create( ff.mold( path ) ); OutputStream os = ff.open(
 	 * path ).write( hook ); return write( hook, os, cs, delimiter, true ); }
 	 */
-
+	@Deprecated
 	static Consumer<String> write(
 			Rook rook,
 			OutputStream os,

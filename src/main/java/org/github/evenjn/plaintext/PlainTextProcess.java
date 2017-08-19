@@ -75,7 +75,7 @@ public class PlainTextProcess {
 			@Override
 			public void run( ) {
 				try ( AutoRook hook = hf.get( ) ) {
-					Cursor<String> cursor = PlainText.reader( ).build( ).get( hook,
+					Cursor<String> cursor = PlainTextBlueprint.nu( ).reader( ).get( ).get( hook,
 							process.getErrorStream( ) );
 
 					for ( ;; ) {
@@ -101,7 +101,7 @@ public class PlainTextProcess {
 			@Override
 			public void run( ) {
 				try ( AutoRook hook = hf.get( ) ) {
-					Cursor<String> cursor = PlainText.reader( ).build( ).get( hook,
+					Cursor<String> cursor = PlainTextBlueprint.nu( ).reader( ).get( ).get( hook,
 							process.getInputStream( ) );
 
 					for ( ;; ) {
