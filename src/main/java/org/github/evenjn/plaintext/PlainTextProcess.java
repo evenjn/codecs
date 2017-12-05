@@ -21,23 +21,20 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
-import org.github.evenjn.lang.AutoRook;
+import org.github.evenjn.lang.BasicRook;
 import org.github.evenjn.yarn.Cursor;
 import org.github.evenjn.yarn.EndOfCursorException;
 
 public class PlainTextProcess {
 
 	public static boolean run(
-			Supplier<AutoRook> hf,
 			Path workingDirectory,
 			ProcessBuilder process_builder,
 			int timeout_minutes )
 			throws IOException,
 			InterruptedException {
 		return run(
-				hf,
 				workingDirectory,
 				process_builder,
 				standardOutput( true ),
@@ -48,7 +45,6 @@ public class PlainTextProcess {
 	public static boolean print_debug = true;
 
 	public static boolean run(
-			Supplier<AutoRook> hf,
 			Path workingDirectory,
 			ProcessBuilder process_builder,
 			Consumer<String> out_putter,
@@ -74,9 +70,10 @@ public class PlainTextProcess {
 
 			@Override
 			public void run( ) {
-				try ( AutoRook hook = hf.get( ) ) {
-					Cursor<String> cursor = PlainTextBlueprint.nu( ).reader( ).get( ).get( hook,
-							process.getErrorStream( ) );
+				try ( BasicRook hook = new BasicRook( ) ) {
+					Cursor<String> cursor =
+							PlainTextBlueprint.nu( ).reader( ).get( ).get( hook,
+									process.getErrorStream( ) );
 
 					for ( ;; ) {
 						try {
@@ -100,9 +97,10 @@ public class PlainTextProcess {
 
 			@Override
 			public void run( ) {
-				try ( AutoRook hook = hf.get( ) ) {
-					Cursor<String> cursor = PlainTextBlueprint.nu( ).reader( ).get( ).get( hook,
-							process.getInputStream( ) );
+				try ( BasicRook hook = new BasicRook( ) ) {
+					Cursor<String> cursor =
+							PlainTextBlueprint.nu( ).reader( ).get( ).get( hook,
+									process.getInputStream( ) );
 
 					for ( ;; ) {
 						try {

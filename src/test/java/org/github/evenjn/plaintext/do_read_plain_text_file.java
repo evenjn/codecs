@@ -24,17 +24,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.github.evenjn.bzip2.Bzip2;
-import org.github.evenjn.lang.AutoRook;
+import org.github.evenjn.lang.BasicRook;
 import org.github.evenjn.yarn.Cursor;
 import org.github.evenjn.yarn.EndOfCursorException;
 
 public class do_read_plain_text_file {
 
-	public static void main( String[] args ) throws IOException {
-		try ( AutoRook hook = new BasicAutoHook( ) ) {
+	public static void main( String[] args )
+			throws IOException {
+		try ( BasicRook rook = new BasicRook( ) ) {
 			Path path = Paths.get( "./src/test/resources/test.txt" );
-			InputStream is = hook.hook( Files.newInputStream( path ) );
-			Cursor<String> stream = PlainTextBlueprint.nu( ).reader( ).get( ).get( hook, is );
+			InputStream is = rook.hook( Files.newInputStream( path ) );
+			Cursor<String> stream =
+					PlainTextBlueprint.nu( ).reader( ).get( ).get( rook, is );
 			for ( ;; ) {
 				try {
 					System.out.println( stream.next( ) );
@@ -45,9 +47,9 @@ public class do_read_plain_text_file {
 			}
 
 			path = Paths.get( "./src/test/resources/test.txt.bz2" );
-			is = hook.hook( Files.newInputStream( path ) );
-			is = Bzip2.decoder( ).build( ).get( hook, is );
-			stream = PlainTextBlueprint.nu( ).reader( ).get( ).get( hook, is );
+			is = rook.hook( Files.newInputStream( path ) );
+			is = Bzip2.decoder( ).build( ).apply( rook, is );
+			stream = PlainTextBlueprint.nu( ).reader( ).get( ).get( rook, is );
 			for ( ;; ) {
 				try {
 					System.out.println( stream.next( ) );

@@ -26,12 +26,12 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
 import org.github.evenjn.lang.Rook;
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.CursorRookMap;
+import org.github.evenjn.yarn.CursorRingMap;
 import org.github.evenjn.yarn.EndOfCursorException;
 
 public class ZipDecoderBlueprint {
 
-	public CursorRookMap<InputStream, ZipEntry> build( ) {
+	public CursorRingMap<InputStream, ZipEntry> build( ) {
 		return ZipDecoderBlueprint::decode;
 	}
 

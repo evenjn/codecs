@@ -23,7 +23,7 @@ import java.text.Normalizer.Form;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.github.evenjn.yarn.Tuple;
+import org.github.evenjn.lang.Tuple;
 
 public class Unicode {
 

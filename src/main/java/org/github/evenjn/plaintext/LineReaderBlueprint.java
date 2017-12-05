@@ -28,16 +28,16 @@ import java.util.regex.Pattern;
 
 import org.github.evenjn.lang.Rook;
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.CursorRookMap;
+import org.github.evenjn.yarn.CursorRingMap;
 import org.github.evenjn.yarn.EndOfCursorException;
 
 @Deprecated
 public class LineReaderBlueprint {
 
-	public CursorRookMap<InputStream, String> build( ) {
+	public CursorRingMap<InputStream, String> build( ) {
 		final Charset local_cs = cs;
 		final Pattern local_delimiter = delimiter;
-		return new CursorRookMap<InputStream, String>( ) {
+		return new CursorRingMap<InputStream, String>( ) {
 
 			@Override
 			public Cursor<String> get( Rook rook, InputStream input ) {

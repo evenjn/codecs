@@ -22,20 +22,20 @@ import java.nio.charset.Charset;
 import java.util.function.Consumer;
 
 import org.github.evenjn.lang.Rook;
-import org.github.evenjn.lang.RookFunction;
+import org.github.evenjn.yarn.RingFunction;
 
 @Deprecated
 public class LineWriterBlueprint {
 
-	public RookFunction<OutputStream, Consumer<String>> build( ) {
+	public RingFunction<OutputStream, Consumer<String>> build( ) {
 		final Charset local_cs = cs;
 		final String local_delimiter = delimiter;
 		final boolean local_force_flush = force_flush;
-		RookFunction<OutputStream, Consumer<String>> result =
-				new RookFunction<OutputStream, Consumer<String>>( ) {
+		RingFunction<OutputStream, Consumer<String>> result =
+				new RingFunction<OutputStream, Consumer<String>>( ) {
 
 					@Override
-					public Consumer<String> get( Rook rook, OutputStream output_stream ) {
+					public Consumer<String> apply( Rook rook, OutputStream output_stream ) {
 						return PlainText.write( rook, output_stream, local_cs,
 								local_delimiter, local_force_flush );
 					}

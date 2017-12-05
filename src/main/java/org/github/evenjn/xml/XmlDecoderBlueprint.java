@@ -23,13 +23,13 @@ import java.nio.charset.Charset;
 
 import org.github.evenjn.lang.Rook;
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.CursorRookMap;
+import org.github.evenjn.yarn.CursorRingMap;
 
 public class XmlDecoderBlueprint {
 
-	public CursorRookMap<InputStream, SuppressedXmlStreamElement> build( ) {
+	public CursorRingMap<InputStream, SuppressedXmlStreamElement> build( ) {
 		Charset local_cs = cs;
-		return new CursorRookMap<InputStream, SuppressedXmlStreamElement>( ) {
+		return new CursorRingMap<InputStream, SuppressedXmlStreamElement>( ) {
 
 			@Override
 			public Cursor<SuppressedXmlStreamElement> get( Rook rook,

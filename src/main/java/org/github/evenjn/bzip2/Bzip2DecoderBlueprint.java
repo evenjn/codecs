@@ -23,11 +23,11 @@ import java.io.InputStream;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.github.evenjn.lang.Rook;
-import org.github.evenjn.lang.RookFunction;
+import org.github.evenjn.yarn.RingFunction;
 
 public class Bzip2DecoderBlueprint {
 
-	public RookFunction<InputStream, InputStream> build( ) {
+	public RingFunction<InputStream, InputStream> build( ) {
 		return Bzip2DecoderBlueprint::decode;
 	}
 

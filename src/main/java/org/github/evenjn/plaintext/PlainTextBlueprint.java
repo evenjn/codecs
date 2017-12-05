@@ -34,10 +34,10 @@ import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
 import org.github.evenjn.lang.Rook;
-import org.github.evenjn.lang.RookFunction;
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.CursorRookMap;
+import org.github.evenjn.yarn.CursorRingMap;
 import org.github.evenjn.yarn.EndOfCursorException;
+import org.github.evenjn.yarn.RingFunction;
 
 public class PlainTextBlueprint {
 
@@ -45,16 +45,16 @@ public class PlainTextBlueprint {
 		return new PlainTextBlueprint( );
 	}
 
-	public Supplier<RookFunction<OutputStream, Consumer<String>>> writer( ) {
+	public Supplier<RingFunction<OutputStream, Consumer<String>>> writer( ) {
 		PlainTextBlueprint klone = klone( this );
-		return new Supplier<RookFunction<OutputStream, Consumer<String>>>( ) {
+		return new Supplier<RingFunction<OutputStream, Consumer<String>>>( ) {
 
 			@Override
-			public RookFunction<OutputStream, Consumer<String>> get( ) {
-				return new RookFunction<OutputStream, Consumer<String>>( ) {
+			public RingFunction<OutputStream, Consumer<String>> get( ) {
+				return new RingFunction<OutputStream, Consumer<String>>( ) {
 
 					@Override
-					public Consumer<String> get( Rook rook,
+					public Consumer<String> apply( Rook rook,
 							OutputStream output_stream ) {
 						return write( rook, output_stream, klone.cs,
 								klone.delimiter, klone.force_flush );
@@ -94,13 +94,13 @@ public class PlainTextBlueprint {
 		};
 	}
 
-	public Supplier<CursorRookMap<InputStream, String>> reader( ) {
+	public Supplier<CursorRingMap<InputStream, String>> reader( ) {
 		PlainTextBlueprint klone = klone( this );
-		return new Supplier<CursorRookMap<InputStream, String>>( ) {
+		return new Supplier<CursorRingMap<InputStream, String>>( ) {
 
 			@Override
-			public CursorRookMap<InputStream, String> get( ) {
-				return new CursorRookMap<InputStream, String>( ) {
+			public CursorRingMap<InputStream, String> get( ) {
+				return new CursorRingMap<InputStream, String>( ) {
 
 					@Override
 					public Cursor<String> get( Rook rook, InputStream input ) {

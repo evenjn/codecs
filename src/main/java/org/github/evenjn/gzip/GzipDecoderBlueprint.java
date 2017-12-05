@@ -23,11 +23,11 @@ import org.apache.commons.compress.compressors.CompressorException;
 import org.apache.commons.compress.compressors.CompressorInputStream;
 import org.apache.commons.compress.compressors.CompressorStreamFactory;
 import org.github.evenjn.lang.Rook;
-import org.github.evenjn.lang.RookFunction;
+import org.github.evenjn.yarn.RingFunction;
 
 public class GzipDecoderBlueprint {
 
-	public RookFunction<InputStream, InputStream> build( ) {
+	public RingFunction<InputStream, InputStream> build( ) {
 		return GzipDecoderBlueprint::decode;
 	}
 

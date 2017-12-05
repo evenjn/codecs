@@ -26,12 +26,12 @@ import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.github.evenjn.lang.Rook;
 import org.github.evenjn.yarn.Cursor;
-import org.github.evenjn.yarn.CursorRookMap;
+import org.github.evenjn.yarn.CursorRingMap;
 import org.github.evenjn.yarn.EndOfCursorException;
 
 public class TarDecoderBlueprint {
 
-	public CursorRookMap<InputStream, TarEntry> build( ) {
+	public CursorRingMap<InputStream, TarEntry> build( ) {
 		return TarDecoderBlueprint::decode;
 	}
 
