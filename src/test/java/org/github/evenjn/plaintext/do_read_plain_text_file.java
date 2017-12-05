@@ -24,7 +24,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.github.evenjn.bzip2.Bzip2;
-import org.github.evenjn.yarn.AutoRook;
+import org.github.evenjn.lang.AutoRook;
 import org.github.evenjn.yarn.Cursor;
 import org.github.evenjn.yarn.EndOfCursorException;
 

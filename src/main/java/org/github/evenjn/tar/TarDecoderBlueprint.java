@@ -24,10 +24,10 @@ import org.apache.commons.compress.archivers.ArchiveException;
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.github.evenjn.lang.Rook;
 import org.github.evenjn.yarn.Cursor;
 import org.github.evenjn.yarn.CursorRookMap;
 import org.github.evenjn.yarn.EndOfCursorException;
-import org.github.evenjn.yarn.Rook;
 
 public class TarDecoderBlueprint {
 

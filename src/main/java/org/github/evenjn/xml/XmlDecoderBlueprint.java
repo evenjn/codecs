@@ -21,9 +21,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
+import org.github.evenjn.lang.Rook;
 import org.github.evenjn.yarn.Cursor;
 import org.github.evenjn.yarn.CursorRookMap;
-import org.github.evenjn.yarn.Rook;
 
 public class XmlDecoderBlueprint {
 

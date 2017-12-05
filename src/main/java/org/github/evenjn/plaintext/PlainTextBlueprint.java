@@ -33,15 +33,13 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
-import org.github.evenjn.yarn.RookFunction;
+import org.github.evenjn.lang.Rook;
+import org.github.evenjn.lang.RookFunction;
 import org.github.evenjn.yarn.Cursor;
 import org.github.evenjn.yarn.CursorRookMap;
 import org.github.evenjn.yarn.EndOfCursorException;
-import org.github.evenjn.yarn.Kloneable;
-import org.github.evenjn.yarn.Rook;
 
-public class PlainTextBlueprint implements
-		Kloneable {
+public class PlainTextBlueprint {
 
 	public static final PlainTextBlueprint nu( ) {
 		return new PlainTextBlueprint( );
@@ -181,8 +179,7 @@ public class PlainTextBlueprint implements
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
-	public <K extends Kloneable> K klone( K kloneable )
+	public <K extends PlainTextBlueprint> K klone( K kloneable )
 			throws IllegalArgumentException {
 		if ( this != kloneable ) {
 			throw new IllegalArgumentException( );
@@ -190,6 +187,7 @@ public class PlainTextBlueprint implements
 		PlainTextBlueprint klone = new PlainTextBlueprint( );
 		klone.cs = cs;
 		klone.delimiter = delimiter;
+		klone.delimiter_pattern = delimiter_pattern;
 		klone.force_flush = force_flush;
 		return (K) klone;
 	}

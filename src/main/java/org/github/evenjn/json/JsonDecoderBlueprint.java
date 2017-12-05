@@ -22,8 +22,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
 
-import org.github.evenjn.yarn.RookFunction;
-import org.github.evenjn.yarn.Rook;
+import org.github.evenjn.lang.Rook;
+import org.github.evenjn.lang.RookFunction;
 
 import com.google.gson.Gson;
 

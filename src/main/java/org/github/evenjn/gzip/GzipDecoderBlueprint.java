@@ -22,8 +22,8 @@ import java.io.InputStream;
 import org.apache.commons.compress.compressors.CompressorException;
 import org.apache.commons.compress.compressors.CompressorInputStream;
 import org.apache.commons.compress.compressors.CompressorStreamFactory;
-import org.github.evenjn.yarn.RookFunction;
-import org.github.evenjn.yarn.Rook;
+import org.github.evenjn.lang.Rook;
+import org.github.evenjn.lang.RookFunction;
 
 public class GzipDecoderBlueprint {
 

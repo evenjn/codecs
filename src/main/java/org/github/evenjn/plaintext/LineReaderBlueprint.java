@@ -26,10 +26,10 @@ import java.nio.charset.Charset;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import org.github.evenjn.lang.Rook;
 import org.github.evenjn.yarn.Cursor;
 import org.github.evenjn.yarn.CursorRookMap;
 import org.github.evenjn.yarn.EndOfCursorException;
-import org.github.evenjn.yarn.Rook;
 
 @Deprecated
 public class LineReaderBlueprint {

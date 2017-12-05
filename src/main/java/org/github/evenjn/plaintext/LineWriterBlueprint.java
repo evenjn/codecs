@@ -21,8 +21,8 @@ import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.function.Consumer;
 
-import org.github.evenjn.yarn.RookFunction;
-import org.github.evenjn.yarn.Rook;
+import org.github.evenjn.lang.Rook;
+import org.github.evenjn.lang.RookFunction;
 
 @Deprecated
 public class LineWriterBlueprint {

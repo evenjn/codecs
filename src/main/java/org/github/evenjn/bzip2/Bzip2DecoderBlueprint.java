@@ -22,8 +22,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
-import org.github.evenjn.yarn.RookFunction;
-import org.github.evenjn.yarn.Rook;
+import org.github.evenjn.lang.Rook;
+import org.github.evenjn.lang.RookFunction;
 
 public class Bzip2DecoderBlueprint {
 

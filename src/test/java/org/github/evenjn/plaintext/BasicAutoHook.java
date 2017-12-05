@@ -20,7 +20,7 @@ package org.github.evenjn.plaintext;
 import java.util.Collections;
 import java.util.LinkedList;
 
-import org.github.evenjn.yarn.AutoRook;
+import org.github.evenjn.lang.AutoRook;
 
 public final class BasicAutoHook implements
 		AutoRook {
