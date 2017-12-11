@@ -32,7 +32,7 @@ public class Unicode {
 		for ( Integer i : codepoints( s ) ) {
 			if ( result != null )
 				throw new IllegalArgumentException(
-						"The input string is realized using more than once codepoint." );
+						"The input string is realized using more than one codepoint." );
 			result = i;
 		}
 		return result;
